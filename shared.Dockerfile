@@ -11,7 +11,8 @@ COPY . /code/
 
 RUN LEDGER_ENABLED=false make build
 
-RUN cp /go/pkg/mod/github.com/\!cosm\!wasm/wasmvm@v*/api/libwasmvm.so /lib/libwasmvm.so
+ADD https://github.com/mandrean/wasmvm/releases/download/v0.16.3-arm64/libwasmvm.so /lib/libwasmvm.so
+RUN sha256sum /lib/libwasmvm.so | grep 4a50ccdde91bc39b90ebbd79826825ca4969344f16e8269816536761d723b6b2
 
 FROM ubuntu:20.04
 
